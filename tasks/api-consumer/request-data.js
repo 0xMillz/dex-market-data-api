@@ -23,7 +23,7 @@ task("request-data", "Calls an API Consumer Contract to request external data")
         )
         console.log("Run the following to read the returned result:")
         console.log(
-            "pnpmx hardhat read-data --contract " + contractAddr + " --network " + network.name
+            "pnpm dlx hardhat read-data --contract " + contractAddr + " --network " + network.name
         )
     })
 module.exports = {}

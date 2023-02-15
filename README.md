@@ -61,14 +61,7 @@ The recommendation is to use pnpm 7 or later.
 pnpm add --save-dev @nomicfoundation/hardhat-toolbox @nomicfoundation/hardhat-network-helpers @nomicfoundation/hardhat-chai-matchers @nomiclabs/hardhat-ethers @nomiclabs/hardhat-etherscan chai ethers hardhat-gas-reporter solidity-coverage @typechain/hardhat typechain @typechain/ethers-v5 @ethersproject/abi @ethersproject/providers
 ```
 
-2. You can now do stuff!
-
-```
-pnpmx hardhat test
-```
-
-or
-
+2. You can now do stuff! 
 ```
 pnpm test
 ```
@@ -84,7 +77,7 @@ pnpm install
 
 # Usage
 
-If you run `pnpmx hardhat --help` you'll get an output of all the tasks you can run. 
+If you run `pnpm dlx hardhat --help` you'll get an output of all the tasks you can run. 
 
 ## Deploying Contracts
 
@@ -99,7 +92,7 @@ This will deploy your contracts to a local network. Additionally, if on a local 
 One of the best ways to test and interact with smart contracts is with a local network. To run a local network with all your contracts in it, run the following:
 
 ```
-pnpmx hardhat node
+pnpm dlx hardhat node
 ```
 
 You'll get a local blockchain, private keys, contracts deployed (from the `deployment` folder scripts), and an endpoint to potentially add to an EVM wallet. 
@@ -226,7 +219,7 @@ pnpm test
 To run staging tests on Sepolia network:
 
 ```
-pnpmx hardhat test --network sepolia
+pnpm dlx hardhat test --network sepolia
 ```
 or
 ```bash
@@ -239,7 +232,7 @@ Since all tests are written in a way to be independent from each other, you can 
 
 To run tests in parallel:
 ```
-pnpmx hardhat test --parallel
+pnpm dlx hardhat test --parallel
 ```
 or
 ```
@@ -255,25 +248,25 @@ After deploying your contracts, the deployment output will give you the contract
 The Price Feeds consumer contract has one task, to read the latest price of a specified price feed contract
 
 ```bash
-pnpmx hardhat read-price-feed --contract insert-contract-address-here --network network
+pnpm dlx hardhat read-price-feed --contract insert-contract-address-here --network network
 ```
 
 ## Request & Receive Data
 The APIConsumer contract has two tasks, one to request external data based on a set of parameters, and one to check to see what the result of the data request is. This contract needs to be funded with link first:
 
 ```bash
-pnpmx hardhat fund-link --contract insert-contract-address-here --network network
+pnpm dlx hardhat fund-link --contract insert-contract-address-here --network network
 ```
 
 Once it's funded, you can request external data by passing in a number of parameters to the request-data task. The contract parameter is mandatory, the rest are optional
 
 ```bash
-pnpmx hardhat request-data --contract insert-contract-address-here --network network
+pnpm dlx hardhat request-data --contract insert-contract-address-here --network network
 ```
 
 Once you have successfully made a request for external data, you can see the result via the read-data task
 ```bash
-pnpmx hardhat read-data --contract insert-contract-address-here --network network
+pnpm dlx hardhat read-data --contract insert-contract-address-here --network network
 ```
 
 
@@ -304,13 +297,13 @@ pnpm deploy --network network
 Finally, you need to go to your subscription page one more time and add the address of deployed contract as a new consumer. Once that's done, you can perform a VRF request with the request-random-number task:
 
 ```bash
-pnpmx hardhat request-random-number --contract insert-contract-address-here --network network
+pnpm dlx hardhat request-random-number --contract insert-contract-address-here --network network
 ```
 
 Once you have successfully made a request for a random number, you can see the result via the read-random-number task:
 
 ```bash
-pnpmx hardhat read-random-number --contract insert-contract-address-here --network network
+pnpm dlx hardhat read-random-number --contract insert-contract-address-here --network network
 ```
 
 ### VRF Direct Funding method
@@ -323,19 +316,19 @@ pnpm deploy --network network
 Now you have to fund your consumer contract with LINK tokens:
 
 ```bash
-pnpmx hardhat transfer-link --recipient insert-contract-address-here --amount insert-amount-in-juels-here --network network
+pnpm dlx hardhat transfer-link --recipient insert-contract-address-here --amount insert-amount-in-juels-here --network network
 ```
 
 Once that's done, you can perform a VRF request with the request-random-number task:
 
 ```bash
-pnpmx hardhat request-random-number-direct-funding --callbackgaslimit insert-callback-gas-limit-here --requestconfirmations insert-request-confirmations-here --numwords insert-number-words-here --contract insert-contract-address-here --network network
+pnpm dlx hardhat request-random-number-direct-funding --callbackgaslimit insert-callback-gas-limit-here --requestconfirmations insert-request-confirmations-here --numwords insert-number-words-here --contract insert-contract-address-here --network network
 ```
 
 Once you have successfully made a request for a random number, you can see the result via the read-random-number task:
 
 ```bash
-pnpmx hardhat read-random-number-direct-funding --contract insert-contract-address-here --network network
+pnpm dlx hardhat read-random-number-direct-funding --contract insert-contract-address-here --network network
 ```
 
 ## Automation
@@ -343,7 +336,7 @@ The AutomationCounter contract is a simple Chainlink Automation enabled contract
 
 
 ```bash
-pnpmx hardhat read-automation-counter --contract insert-contract-address-here --network network
+pnpm dlx hardhat read-automation-counter --contract insert-contract-address-here --network network
 ```
 
 ## Verify on Etherscan
@@ -351,12 +344,12 @@ pnpmx hardhat read-automation-counter --contract insert-contract-address-here --
 You'll need an `ETHERSCAN_API_KEY` environment variable. You can get one from the [Etherscan API site.](https://etherscan.io/apis). If you have it set, your deploy script will try to verify them by default, but if you want to verify any manually, you can run: 
 
 ```
-pnpmx hardhat verify --network <NETWORK> <CONTRACT_ADDRESS> <CONSTRUCTOR_PARAMETERS>
+pnpm dlx hardhat verify --network <NETWORK> <CONTRACT_ADDRESS> <CONSTRUCTOR_PARAMETERS>
 ```
 example:
 
 ```
-pnpmx hardhat verify --network sepolia 0x9279791897f112a41FfDa267ff7DbBC46b96c296 "0x694AA1769357215DE4FAC081bf1f309aDC325306"
+pnpm dlx hardhat verify --network sepolia 0x9279791897f112a41FfDa267ff7DbBC46b96c296 "0x694AA1769357215DE4FAC081bf1f309aDC325306"
 ```
 
 # Linting

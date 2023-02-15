@@ -95,7 +95,7 @@ module.exports = {
     etherscan: {
         // pnpm hardhat verify --network <NETWORK> <CONTRACT_ADDRESS> <CONSTRUCTOR_PARAMETERS>
         apiKey: {
-            // pnpmx hardhat verify --list-networks
+            // pnpm dlx hardhat verify --list-networks
             sepolia: ETHERSCAN_API_KEY,
             mainnet: ETHERSCAN_API_KEY,
             polygon: POLYGONSCAN_API_KEY,
